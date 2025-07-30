@@ -1,0 +1,59 @@
+.App-Login-Row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background: linear-gradient(45deg,#6F4e37, #E1B995 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App-Login-Row div {
+  background: #ffffffcc;
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.App-Login-Row h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.App-Login-Row input {
+  width: 90%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.App-Login-Row button {
+  padding: 0.7rem 1.5rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.App-Login-Row button:hover {
+  background-color: #2d76c4;
+}
+
+.App-Login-Row a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.App-Login-Row a:hover {
+  text-decoration: underline;
+}

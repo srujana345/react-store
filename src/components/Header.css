@@ -1,0 +1,60 @@
+/* Header.css */
+
+/* Container */
+.header {
+  background: #4e342e;
+  color: white;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo / Title */
+.header h1 {
+  font-size: 1.8rem;
+  font-family: 'Georgia', serif;
+  color: #ffccbc;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+.header nav {
+  display: flex;
+  gap: 24px;
+}
+
+/* Navigation Links */
+.header nav a {
+  text-decoration: none;
+  color: #fff3e0;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.header nav a:hover {
+  color: #ffab91;
+}
+
+/* Cart Info (optional) */
+.header-cart {
+  background: #d84315;
+  padding: 8px 14px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.header-cart:hover {
+  background: #bf360c;
+}
