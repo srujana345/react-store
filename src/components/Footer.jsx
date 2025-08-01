@@ -17,7 +17,7 @@ export default function Footer() {
 
   return (
     <footer style={footerStyle}>
-      <p>&copy; 2025 YourStore. All rights reserved.</p>
+      <p>&copy; 2025 Qaffeine. All rights reserved.</p>
     </footer>
   );
 }
