@@ -34,15 +34,15 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  const toggleMenu = () => {
-    setMenuOpen(prev => {
-      if (prev) setShowDropdown(false);
-      return !prev;
-    });
-  };
+  // const toggleMenu = () => {
+  //   setMenuOpen(prev => {
+  //     if (prev) setShowDropdown(false);
+  //     return !prev;
+  //   });
+  // };
 
   const toggleDropdown = () => {
-    setShowDropdown(prev => !prev);
+    setShowDropdown((prev) => !prev);
   };
 
   const closeMenuAndDropdown = () => {
@@ -53,42 +53,64 @@ export default function Header() {
   return (
     <div className="header">
       <div className="logo-title">
-  <img src="/images/coffee-cup-logo-icon-vector-20329714.jpg" alt="Qaffeine Logo" className="logo-img" />
-  <h1>Qaffeine</h1>
-</div>
-
-
-      {/* Hamburger */}
-      <div className="hamburger" onClick={toggleMenu}>
-        ☰
+        <img
+          src="/images/coffee-cup-logo-icon-vector-20329714.jpg"
+          alt="Qaffeine Logo"
+          className="logo-img"
+        />
+        <h1>Qaffeine</h1>
       </div>
 
+      {/* Hamburger */}
+      {/* <div className="hamburger" onClick={toggleMenu}>
+        ☰
+      </div> */}
+
       <nav ref={navRef} className={`nav-menu ${menuOpen ? "open" : ""}`}>
-        <Link to="/" onClick={closeMenuAndDropdown}>Home</Link>
+        <Link to="/" onClick={closeMenuAndDropdown}>
+          Home
+        </Link>
 
         {/* Dropdown */}
         <div className="dropdown">
-          <button className="dropbtn" onClick={toggleDropdown}>Menu</button>
+          <button className="dropbtn" onClick={toggleDropdown}>
+            Menu
+          </button>
 
           <div className={`dropdown-content ${showDropdown ? "show" : ""}`}>
-            <Link to="/category/Hot" onClick={closeMenuAndDropdown}>Hot</Link>
-            <Link to="/category/Cold" onClick={closeMenuAndDropdown}>Cold</Link>
-            <Link to="/category/Iced" onClick={closeMenuAndDropdown}>Iced</Link>
+            <Link to="/category/Hot" onClick={closeMenuAndDropdown}>
+              Hot
+            </Link>
+            <Link to="/category/Cold" onClick={closeMenuAndDropdown}>
+              Cold
+            </Link>
+            <Link to="/category/Iced" onClick={closeMenuAndDropdown}>
+              Iced
+            </Link>
           </div>
         </div>
 
-        <Link to="/cart" onClick={closeMenuAndDropdown}>Cart</Link>
-        <Link to="/orders" onClick={closeMenuAndDropdown}>Orders</Link>
+        <Link to="/cart" onClick={closeMenuAndDropdown}>
+          Cart
+        </Link>
+        <Link to="/orders" onClick={closeMenuAndDropdown}>
+          Orders
+        </Link>
 
         {user.email ? (
-          <Link to="/login" onClick={() => {
-            setUser({ name: "", email: "", password: "" });
-            closeMenuAndDropdown();
-          }}>
+          <Link
+            to="/login"
+            onClick={() => {
+              setUser({ name: "", email: "", password: "" });
+              closeMenuAndDropdown();
+            }}
+          >
             Logout
           </Link>
         ) : (
-          <Link to="/login" onClick={closeMenuAndDropdown}>Login</Link>
+          <Link to="/login" onClick={closeMenuAndDropdown}>
+            Login
+          </Link>
         )}
       </nav>
     </div>

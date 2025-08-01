@@ -9,6 +9,9 @@ import Orders from "./components/Orders";
 import { createContext, use, useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HotItems from "./pages/HotItems";
+import ColdItems from "./pages/ColdItems";
+import IcedItems from "./pages/IcedItems";
 export const appContext = createContext();
 function App(props) {
   const [users, setUsers] = useState([]);
@@ -40,6 +43,8 @@ function App(props) {
     fetchProducts();
   }, []);
 
+
+
   return (
     <BrowserRouter>
       <appContext.Provider
@@ -49,6 +54,7 @@ function App(props) {
           user,
           setUser,
           products,
+          setProducts,
           cart,
           setCart,
           orders,
@@ -63,6 +69,9 @@ function App(props) {
           <Route path="orders" element={<Orders />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="/category/Hot" element={<HotItems />} />
+          <Route path="/category/Cold" element={<ColdItems />} />
+          <Route path="/category/Iced" element={<IcedItems />} />
         </Routes>
         <Footer />
       </appContext.Provider>

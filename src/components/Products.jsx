@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import "./Products.css";
+import { useNavigate } from "react-router-dom";
+
 import { appContext } from "../App";
 
 export default function Products() {
@@ -8,7 +10,7 @@ export default function Products() {
   const addToCart = (id) => {
     if (!cart[id]) setCart({ ...cart, [id]: 1 });
   };
-
+const navigate = useNavigate();
   // const increment = (id) => {
   //   setCart({ ...cart, [id]: cart[id] + 1 });
   // };
@@ -40,9 +42,7 @@ export default function Products() {
               <button className="qty-btn" onClick={() => increment(product._id)}>+</button>
             </div>
           ) : ( */}
-            <button className="add-to-cart-btn" onClick={() => addToCart(product._id)}>
-              View items
-            </button>
+            <button className="add-to-cart-btn" onClick={() => navigate("/category/Hot")}>View items</button>
           {/* )} */}
         </div>
       ))}

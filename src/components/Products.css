@@ -75,3 +75,60 @@
   background: linear-gradient(90deg, #6F4e37, #E1B995);
   transform: scale(1.05);
 }
+
+
+/* Cart Button Section */
+.cart-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.cart-buttons button {
+  background: linear-gradient(90deg,#38211E,#4A2C29);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.cart-buttons button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(90deg,#6F4E37, #4A2C29);
+}
+
+.cart-qty {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #5d4037;
+}
+
+.go-to-cart-fixed {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.go-to-cart-btn {
+  background-color: #6f4e37;
+  color: white;
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.go-to-cart-btn:hover {
+  background-color: #8b5e3c;
+}
