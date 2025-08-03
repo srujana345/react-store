@@ -94,7 +94,8 @@ nav .active {
   flex-direction: column;
   gap: 10px;
   background-color: #6d4c41;
-  padding: 10px 0;
+  /* padding: 10px 0; */
+  
   border-radius: 4px;
   position: absolute;
   top: 110%;
@@ -104,7 +105,7 @@ nav .active {
 
 .dropdown-content a {
   color: #fff3e0;
-  padding: 12px 30px;
+  padding: 12px 20px;
   text-decoration: none;
   display: block;
   transition: background 0.2s ease-in-out;

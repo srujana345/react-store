@@ -9,9 +9,8 @@ import Orders from "./components/Orders";
 import { createContext, use, useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HotItems from "./pages/HotItems";
-import ColdItems from "./pages/ColdItems";
-import IcedItems from "./pages/IcedItems";
+import CategoryItems from "./pages/CategoryItems";
+
 export const appContext = createContext();
 function App(props) {
   const [users, setUsers] = useState([]);
@@ -20,14 +19,6 @@ function App(props) {
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
   const API = process.env.REACT_APP_API;
-  // const products = [
-  //   { id: 1, name: "Product 1", price: 56,desc:"This is a sample description of the product",imgUrl:"https://picsum.photos/id/1/350/350" },
-  //   { id: 2, name: "Product 2", price: 40,desc:"This is a sample description of the product",imgUrl:"https://picsum.photos/id/2/350/350" },
-  //   { id: 3, name: "Product 3", price: 35,desc:"This is a sample description of the product",imgUrl:"https://picsum.photos/id/3/350/350" },
-  //   { id: 4, name: "Product 4", price: 25,desc:"This is a sample description of the product",imgUrl:"https://picsum.photos/id/4/350/350" },
-  //   { id: 5, name: "Product 5", price: 95,desc:"This is a sample description of the product",imgUrl:"https://picsum.photos/id/5/350/350" },
-  //   { id: 6, name: "Product 6", price: 85,desc:"This is a sample description of the product",imgUrl:"https://picsum.photos/id/6/350/350" },
-  // ];
 
   const fetchProducts = async () => {
     try {
@@ -69,9 +60,8 @@ function App(props) {
           <Route path="orders" element={<Orders />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="/category/Hot" element={<HotItems />} />
-          <Route path="/category/Cold" element={<ColdItems />} />
-          <Route path="/category/Iced" element={<IcedItems />} />
+          <Route path="/category/:category" element={<CategoryItems />} />
+
         </Routes>
         <Footer />
       </appContext.Provider>

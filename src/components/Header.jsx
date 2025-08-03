@@ -85,7 +85,7 @@ export default function Header() {
               Cold
             </Link>
             <Link to="/category/Iced" onClick={closeMenuAndDropdown}>
-              Iced
+              Bubble Tea
             </Link>
           </div>
         </div>

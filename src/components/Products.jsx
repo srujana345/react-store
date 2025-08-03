@@ -1,49 +1,45 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Products.css";
 import { useNavigate } from "react-router-dom";
 
-import { appContext } from "../App";
-
 export default function Products() {
-  const { products, cart, setCart } = useContext(appContext);
+  const navigate = useNavigate();
 
-  const addToCart = (id) => {
-    if (!cart[id]) setCart({ ...cart, [id]: 1 });
-  };
-const navigate = useNavigate();
-  // const increment = (id) => {
-  //   setCart({ ...cart, [id]: cart[id] + 1 });
-  // };
-
-  // const decrement = (id) => {
-  //   if (cart[id] > 1) {
-  //     setCart({ ...cart, [id]: cart[id] - 1 });
-  //   } else {
-  //     const newCart = { ...cart };
-  //     delete newCart[id];
-  //     setCart(newCart);
-  //   }
-  // };
+  // Define your category cards data here
+  const categories = [
+    {
+      name: "Hot",
+      description: "Hot, bold, and ready to steal your heart—one sip at a time.",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlFqNY3JAPNQxCIHkDxm0zQD1mjNOmDpABlA&s", // replace with your image URL
+      category: "Hot",
+    },
+    {
+      name: "Cold",
+      description: "Cool, smooth, and impossible to resist — just like your type.",
+      image: "https://www.shutterstock.com/image-photo/black-iced-coffee-beans-on-600nw-2481549469.jpg", // replace with your image URL
+      category: "Cold",
+    },
+    {
+      name: "Bubble Tea",
+      description: "Chilled perfection to refresh your day.",
+      image: "https://info.ehl.edu/hubfs/Blog-EHL-Insights/Blog-Header-EHL-Insights/bubble-tea.jpg", // replace with your image URL
+      category: "Iced",
+    },
+  ];
 
   return (
     <div className="product-grid">
-      {products.map((product) => (
-        <div className="product-card" key={product._id}>
-          <img src={product.url} alt={product.name} className="product-image" />
-          <h2 className="product-title">{product.name}</h2>
-          <p className="product-desc">{product.desc}</p>
-          {/* <p className="product-price">₹{product.price}</p> */}
-
-          {/* Removed quantity controls for this view */}
-          {/* {cart[product._id] > 0 ? (
-            <div className="product-quantity">
-              <button className="qty-btn" onClick={() => decrement(product._id)}>-</button>
-              <span>{cart[product._id]}</span>
-              <button className="qty-btn" onClick={() => increment(product._id)}>+</button>
-            </div>
-          ) : ( */}
-            <button className="add-to-cart-btn" onClick={() => navigate("/category/Hot")}>View items</button>
-          {/* )} */}
+      {categories.map((item) => (
+        <div className="product-card" key={item.category}>
+          <img src={item.image} alt={item.name} className="product-image" />
+          <h2 className="product-title">{item.name}</h2>
+          <p className="product-desc">{item.description}</p>
+          <button
+            className="add-to-cart-btn"
+            onClick={() => navigate(`/category/${item.category}`)}
+          >
+            View Items
+          </button>
         </div>
       ))}
     </div>
