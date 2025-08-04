@@ -7,6 +7,7 @@ export default function Header() {
   const { user, setUser, cart, products, orders } = useContext(appContext);
   const items = products.filter((value) => cart[value._id] > 0);
 
+
   const [myOrder, setMyOrder] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -90,9 +91,11 @@ export default function Header() {
           </div>
         </div>
 
-        <Link to="/cart" onClick={closeMenuAndDropdown}>
-          Cart
-        </Link>
+        <Link to="/cart" onClick={closeMenuAndDropdown} className="cart-link">
+  Cart🛒
+  {items.length > 0 && <span className="cart-badge">{items.length}</span>}
+</Link>
+
         <Link to="/orders" onClick={closeMenuAndDropdown}>
           Orders
         </Link>

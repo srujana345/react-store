@@ -27,24 +27,75 @@ export default function Cart() {
       handleDelete(id);
     }
   };
+  const loadScript = (src) => {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
 
+  // const placeOrder = async () => {
+  //   try {
+  //     const order = {
+  //       email: user?.email,
+  //       items: cart,
+  //       total: orderValue,
+  //     };
+  //     const url = `${API}/api/order/neworder`;
+  //     await axios.post(url, order);
+  //     setCart({});
+  //     navigate("/orders");
+  //   } catch (error) {
+  //     console.error("Failed to place order:", error);
+  //     alert("Something went wrong while placing the order.");
+  //   }
+  // };
   const placeOrder = async () => {
-    try {
-      const order = {
-        email: user?.email,
-        items: cart,
-        total: orderValue,
-      };
-      const url = `${API}/api/order/neworder`;
-      await axios.post(url, order);
-      setCart({});
-      navigate("/orders");
-    } catch (error) {
-      console.error("Failed to place order:", error);
-      alert("Something went wrong while placing the order.");
-    }
+  const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+
+  if (!res) {
+    alert("Failed to load Razorpay SDK. Check your internet.");
+    return;
+  }
+  const razorpayOptions = {
+    key: "rzp_test_CJoZtIIL9GteP3", // Replace with your actual Razorpay Key
+    amount: orderValue * 100, // Razorpay uses paise
+    currency: "INR",
+    name: "Qaffeine Store",
+    description: "Order Payment",
+    prefill: {
+      name: user?.name || "Guest",
+      email: user?.email || "noemail@example.com",
+      contact: "9999999999", // optional
+    },
+    handler: async function (response) {
+      try {
+        const order = {
+          email: user?.email,
+          items: cart,
+          total: orderValue,
+          razorpayPaymentId: response.razorpay_payment_id,
+        };
+        const url = `${API}/api/order/neworder`;
+        await axios.post(url, order);
+        setCart({});
+        navigate("/orders");
+      } catch (error) {
+        console.error("Order failed:", error);
+        alert("Order failed even after payment. Please contact support.");
+      }
+    },
+    theme: {
+      color: "#6F4e37",
+    },
   };
 
+  const rzp = new window.Razorpay(razorpayOptions);
+  rzp.open();
+};
   useEffect(() => {
     setOrderValue(
       products.reduce((sum, value) => {
@@ -84,7 +135,9 @@ export default function Cart() {
                 </div>
               )
           )}
-          <div className="order-value">Order Value: ₹{orderValue.toFixed(2)}</div>
+          <div className="order-value">
+            Order Value: ₹{orderValue.toFixed(2)}
+          </div>
           <div>
             {user?.email ? (
               <button
@@ -92,7 +145,7 @@ export default function Cart() {
                 onClick={placeOrder}
                 disabled={orderValue === 0}
               >
-                Place Order
+                Proceed to Payment
               </button>
             ) : (
               <button className="order-btn" onClick={() => navigate("/login")}>
