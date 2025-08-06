@@ -26,8 +26,9 @@ export default function Products() {
       category: "Iced",
     },
   ];
-
+  
   return (
+    <div> <h2 className="product-subtitle">What's on your mind today?</h2>
     <div className="product-grid">
       {categories.map((item) => (
         <div className="product-card" key={item.category}>
@@ -42,6 +43,7 @@ export default function Products() {
           </button>
         </div>
       ))}
+    </div>
     </div>
   );
 }

@@ -54,12 +54,15 @@ export default function Header() {
   return (
     <div className="header">
       <div className="logo-title">
-        <img
-          src="/images/coffee-cup-logo-icon-vector-20329714.jpg"
-          alt="Qaffeine Logo"
-          className="logo-img"
-        />
-        <h1>Qaffeine</h1>
+        <div className="logo-title-top">
+      <img
+        src="/images/coffee-cup-logo-icon-vector-20329714.jpg"
+        alt="Qaffeine Logo"
+        className="logo-img"
+      />
+      <h1>Qaffeine</h1>
+    </div>
+        <p className="tagline">Curated with love – Srujana</p>
       </div>
 
       {/* Hamburger */}

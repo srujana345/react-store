@@ -145,5 +145,33 @@ nav .active {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
+.logo-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
- 
+.logo-title-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space between logo and text */
+}
+
+.logo-img {
+  width: 50px; /* adjust size as needed */
+  height: auto;
+}
+
+.logo-title h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.logo-title .tagline {
+  font-family: "Dancing Script", cursive;
+  font-size: 1rem;
+  color: #aa856c;
+  letter-spacing: 0.5px;
+}
+

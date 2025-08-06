@@ -132,3 +132,14 @@
 .go-to-cart-btn:hover {
   background-color: #8b5e3c;
 }
+.product-subtitle {
+  font-family: 'Lucinda Handwriting', cursive;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1.5rem 0;
+  color: #6D4C41; /* A rich brown shade */
+  letter-spacing: .5px;
+}
+
+/* #5c4033 */
